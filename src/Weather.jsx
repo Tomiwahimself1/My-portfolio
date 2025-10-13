@@ -107,9 +107,6 @@ export default function WeatherApp() {
 
         {/* Optional: Link back to home if part of a multi-page app */}
         <p style={{ textAlign: 'center', marginTop: '20px' }}>
-          <Link to="/" style={{ color: '#4f46e5', textDecoration: 'none', fontWeight: 500 }}>
-            Back to Home
-          </Link>
         </p>
       </div>
     </div>
