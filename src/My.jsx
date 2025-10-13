@@ -1066,7 +1066,7 @@ export default function Myportfolio() {
 
       {/* Footer */}
       <footer>
-        <p>© 2025 Tom Dev. All rights reserved. Built with React & CSS ❤️</p>
+        <p>© 2025 Tom Dev. All rights reserved ❤️</p>
       </footer>
     </div>
   );
