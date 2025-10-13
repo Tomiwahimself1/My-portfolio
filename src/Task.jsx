@@ -216,7 +216,7 @@ const TaskManager = () => {
         ))}
       </div>
 
-      <p className="footer"><Database size={14} /> Drag and drop tasks between columns to update their status • <Link to="/">Back to Home</Link></p>
+      <p className="footer"><Database size={14} /> Drag and drop tasks between columns to update their status • </p>
       
 
       <style>{`
