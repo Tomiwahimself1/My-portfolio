@@ -22,25 +22,29 @@ export default function Myportfolio() {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      image: '🛍️'
-    },
-    {
       title: 'Task Management App',
       description: 'Real-time collaborative task manager with drag-and-drop functionality.',
       tech: ['React', 'Firebase', 'CSS'],
       image: '📋',
       link: '/task'
     },
-    {
+
+     {
       title: 'Weather Dashboard',
       description: 'Interactive weather application with forecasts and location-based data.',
       tech: ['React', 'API', 'Charts'],
       image: '🌤️',
       link: '/weather'
     },
+
+    {
+      title: 'E-Commerce Platform',
+      description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
+      tech: ['React', 'Node.js', 'MongoDB'],
+      image: '🛍️'
+    },
+    
+   
     {
       title: 'Social Media Analytics',
       description: 'Analytics platform for tracking social media metrics and engagement.',
