@@ -840,7 +840,7 @@ export default function Myportfolio() {
           <p>Full Stack Developer | UI/UX Enthusiast | Problem Solver</p>
 
           <div className="social-links">
-            <a href="https://github.com/Tomiwahimself1" title="GitHub" className="github"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://github.com/Tomiwahimself1" target='_blank' title="GitHub" className="github"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
       <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 
       3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 
       0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.083-.729.083-.729 
