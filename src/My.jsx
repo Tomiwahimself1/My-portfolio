@@ -841,7 +841,7 @@ export default function Myportfolio() {
         <div className="hero-content">
           <div className="hero-icon">💻</div>
           <h1>Tommy Dev</h1>
-          <p>Full Stack Developer | UI/UX Enthusiast | Problem Solver</p>
+          <p>Software Engineer | Full Stack Developer | UI/UX Enthusiast | Problem Solver</p>
 
           <div className="social-links">
             <a href="https://github.com/Tomiwahimself1" target='_blank' title="GitHub" className="github"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
@@ -859,6 +859,24 @@ export default function Myportfolio() {
       0 1.606-.014 2.898-.014 3.293 
       0 .319.218.694.825.576C20.565 22.092 24 17.592 
       24 12.297c0-6.627-5.373-12-12-12"/>
+    </svg></a>
+
+    <a href="https://x.com/Adedinsewo_" target='_blank' title="Twitter" className="twitter"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 
+      4.932 0 0 0 2.165-2.724 9.864 
+      9.864 0 0 1-3.127 1.195 4.916 
+      4.916 0 0 0-8.384 4.482A13.945 
+      13.945 0 0 1 1.671 3.149 4.916 
+      4.916 0 0 0 3.195 9.723a4.903 
+      4.903 0 0 1-2.229-.616v.061a4.918 
+      4.918 0 0 0 3.946 4.827 4.996 
+      4.996 0 0 1-2.224.084 4.928 
+      4.928 0 0 0 4.6 3.417A9.867 
+      9.867 0 0 1 0 19.54a13.945 
+      13.945 0 0 0 7.548 2.212c9.057 
+      0 14.01-7.496 14.01-13.986 
+      0-.213-.005-.425-.014-.636A9.936 
+      9.936 0 0 0 24 4.557z"/>
     </svg></a>
 
             <a href="#" title="LinkedIn" className="linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
@@ -879,23 +897,7 @@ export default function Myportfolio() {
       10L0 3h24l-12 7z"/>
     </svg></a>
 
-            <a href="https://x.com/Adedinsewo_" target='_blank' title="Twitter" className="twitter"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 
-      4.932 0 0 0 2.165-2.724 9.864 
-      9.864 0 0 1-3.127 1.195 4.916 
-      4.916 0 0 0-8.384 4.482A13.945 
-      13.945 0 0 1 1.671 3.149 4.916 
-      4.916 0 0 0 3.195 9.723a4.903 
-      4.903 0 0 1-2.229-.616v.061a4.918 
-      4.918 0 0 0 3.946 4.827 4.996 
-      4.996 0 0 1-2.224.084 4.928 
-      4.928 0 0 0 4.6 3.417A9.867 
-      9.867 0 0 1 0 19.54a13.945 
-      13.945 0 0 0 7.548 2.212c9.057 
-      0 14.01-7.496 14.01-13.986 
-      0-.213-.005-.425-.014-.636A9.936 
-      9.936 0 0 0 24 4.557z"/>
-    </svg></a>
+            
           </div>
 
           <button className="cta-button" onClick={() => scrollToSection('contact')}>
@@ -1053,7 +1055,7 @@ export default function Myportfolio() {
           name="message"
           value={formData.message}
           onChange={handleInputChange}
-          placeholder="Tell me about your project..."
+          placeholder="Write your message here..."
           required
         ></textarea>
       </div>
@@ -1070,7 +1072,7 @@ export default function Myportfolio() {
 
       {/* Footer */}
       <footer>
-        <p>© 2025 Tom Dev. All rights reserved ❤️</p>
+        <p>© 2025 Tom Dev ❤️</p>
       </footer>
     </div>
   );
