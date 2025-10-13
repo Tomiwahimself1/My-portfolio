@@ -875,7 +875,7 @@ export default function Myportfolio() {
       10L0 3h24l-12 7z"/>
     </svg></a>
 
-            <a href="#" title="Twitter" className="twitter"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://x.com/Adedinsewo_" target='_blank' title="Twitter" className="twitter"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
       <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 
       4.932 0 0 0 2.165-2.724 9.864 
       9.864 0 0 1-3.127 1.195 4.916 
