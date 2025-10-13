@@ -1067,8 +1067,6 @@ export default function Myportfolio() {
       {/* Footer */}
       <footer>
         <p>© 2025 Tom Dev. All rights reserved. Built with React & CSS ❤️</p>
-         {/* my link */}
-         <p><Link to="/">Back to Home</Link></p> 
       </footer>
     </div>
   );
