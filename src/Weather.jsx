@@ -49,7 +49,7 @@ export default function WeatherApp() {
       setError("");
 
       const weatherRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=2c1cc1b2f96b43e5a5e1e7f3f3f3f3f3`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=3afe3b1c610e737da0195079a5d9fa16`
       );
 
       if (!weatherRes.ok) throw new Error("Weather data not found");
@@ -58,7 +58,7 @@ export default function WeatherApp() {
       setWeather(weatherData);
 
       const forecastRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}&appid=2c1cc1b2f96b43e5a5e1e7f3f3f3f3f3`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}&appid=3afe3b1c610e737da0195079a5d9fa16`
       );
 
       if (forecastRes.ok) {
@@ -84,7 +84,7 @@ export default function WeatherApp() {
       setError("");
 
       const geoRes = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=2c1cc1b2f96b43e5a5e1e7f3f3f3f3f3`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=3afe3b1c610e737da0195079a5d9fa16`
       );
 
       const geoData = await geoRes.json();
