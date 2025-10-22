@@ -1,226 +1,498 @@
-import React, { useState, useEffect } from 'react';
-import { Cloud, Sun, CloudRain, Wind, Droplets, Eye, Gauge, MapPin, Search, Loader } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import {
+  Cloud,
+  Sun,
+  CloudRain,
+  Wind,
+  Droplets,
+  Eye,
+  Gauge,
+  MapPin,
+  Search,
+  Loader,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function WeatherApp() {
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState("");
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [unit, setUnit] = useState("metric");
 
-  // ✅ My WeatherMap API key
-  const API_KEY = '3afe3b1c610e737da0195079a5d9fa16';
+  useEffect(() => {
+    getCurrentLocationWeather();
+  }, []);
 
-  const fetchWeather = async () => {
-    if (!location) return;
-    setLoading(true);
-    try {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`
+  const getCurrentLocationWeather = () => {
+    if (navigator.geolocation) {
+      setLoading(true);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          fetchWeatherByCoords(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+        },
+        () => {
+          setError("Unable to get your location. Please search for a city.");
+          setLoading(false);
+        }
       );
-      const data = await res.json();
-      if (data.cod === 200) {
-        setWeather(data);
-        const forecastRes = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${API_KEY}`
-        );
-        const forecastData = await forecastRes.json();
-        setForecast(forecastData.list.slice(0, 5));
-      } else {
-        setWeather(null);
-      }
-    } catch (error) {
-      console.error(error);
     }
-    setLoading(false);
+  };
+
+  const fetchWeatherByCoords = async (lat, lon) => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const weatherRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=2c1cc1b2f96b43e5a5e1e7f3f3f3f3f3`
+      );
+
+      if (!weatherRes.ok) throw new Error("Weather data not found");
+
+      const weatherData = await weatherRes.json();
+      setWeather(weatherData);
+
+      const forecastRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}&appid=2c1cc1b2f96b43e5a5e1e7f3f3f3f3f3`
+      );
+
+      if (forecastRes.ok) {
+        const forecastData = await forecastRes.json();
+        const dailyForecast = forecastData.list
+          .filter((item, i) => i % 8 === 0)
+          .slice(0, 5);
+        setForecast(dailyForecast);
+      }
+    } catch (err) {
+      setError("Failed to fetch weather data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const searchWeather = async (e) => {
+    e.preventDefault();
+    if (!location.trim()) return;
+
+    try {
+      setLoading(true);
+      setError("");
+
+      const geoRes = await fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=2c1cc1b2f96b43e5a5e1e7f3f3f3f3f3`
+      );
+
+      const geoData = await geoRes.json();
+
+      if (geoData.length === 0) {
+        throw new Error("Location not found");
+      }
+
+      fetchWeatherByCoords(geoData[0].lat, geoData[0].lon);
+    } catch (err) {
+      setError("Location not found. Please try again.");
+      setLoading(false);
+    }
   };
 
   const getWeatherIcon = (main) => {
-    switch (main) {
-      case 'Clear': return <Sun size={64} color="#facc15" />;
-      case 'Clouds': return <Cloud size={64} color="#9ca3af" />;
-      case 'Rain': return <CloudRain size={64} color="#3b82f6" />;
-      default: return <Wind size={64} color="#6b7280" />;
-    }
+    const icons = {
+      Clear: Sun,
+      Clouds: Cloud,
+      Rain: CloudRain,
+      Drizzle: CloudRain,
+      Thunderstorm: CloudRain,
+      Snow: Cloud,
+      Mist: Cloud,
+      Smoke: Cloud,
+      Haze: Cloud,
+      Dust: Cloud,
+      Fog: Cloud,
+      Sand: Cloud,
+      Ash: Cloud,
+      Squall: Wind,
+      Tornado: Wind,
+    };
+    return icons[main] || Cloud;
   };
 
-  useEffect(() => {
-    const enterKey = (e) => e.key === 'Enter' && fetchWeather();
-    window.addEventListener('keydown', enterKey);
-    return () => window.removeEventListener('keydown', enterKey);
-  });
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleDateString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
+  const WeatherIcon = weather ? getWeatherIcon(weather.weather[0].main) : Cloud;
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h1 style={styles.title}>Weather App</h1>
-        <div style={styles.searchBar}>
-          <MapPin style={styles.icon} />
-          <input
-            type="text"
-            placeholder="Enter city..."
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            style={styles.input}
-          />
-          <button onClick={fetchWeather} style={styles .searchBtn}>
-            {loading ? <Loader className="animate-spin" /> : <Search />}
-          </button>
+    <div className="weather-container">
+      <div className="weather-inner">
+        <div className="weather-header">
+          <h1>Weather Forecast</h1>
+          <p>Your personal weather companion</p>
         </div>
 
-        {weather && (
-          <div style={styles.weatherSection}>
-            <div style={styles.mainInfo}>
-              {getWeatherIcon(weather.weather[0].main)}
-              <h2 style={styles.temp}>{Math.round(weather.main.temp)}°C</h2>
-              <p style={styles.desc}>{weather.weather[0].description}</p>
+        <form onSubmit={searchWeather} className="search-form">
+          <div className="search-bar">
+            <div className="input-group">
+              <Search className="search-icon" size={20} />
+              <input
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="Search for a city..."
+              />
             </div>
+            <button type="submit" className="btn search-btn">
+              Search
+            </button>
+            <button
+              type="button"
+              onClick={getCurrentLocationWeather}
+              className="btn map-btn"
+            >
+              <MapPin size={20} />
+            </button>
+          </div>
+        </form>
 
-            <div style={styles.details}>
-              <div style={styles.detailItem}><Droplets /> Humidity: {weather.main.humidity}%</div>
-              <div style={styles.detailItem}><Wind /> Wind: {weather.wind.speed} m/s</div>
-              <div style={styles.detailItem}><Gauge /> Pressure: {weather.main.pressure} hPa</div>
-              <div style={styles.detailItem}><Eye /> Visibility: {weather.visibility / 1000} km</div>
-            </div>
+        {error && <div className="error-box">{error}</div>}
+
+        {loading && (
+          <div className="loading">
+            <Loader className="spin" size={48} />
           </div>
         )}
 
-        {forecast.length > 0 && (
-          <div style={styles.forecast}>
-            <h3 style={styles.subtitle}>Next Hours</h3>
-            <div style={styles.forecastGrid}>
-              {forecast.map((f, i) => (
-                <div key={i} style={styles.forecastItem}>
-                  {getWeatherIcon(f.weather[0].main)}
-                  <p style={styles.forecastTime}>
-                    {new Date(f.dt * 1000).toLocaleTimeString([], {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </p>
-                  <p style={styles.forecastTemp}>{Math.round(f.main.temp)}°C</p>
+        {!loading && weather && (
+          <div className="weather-content">
+            <div className="weather-card">
+              <div className="weather-top">
+                <div>
+                  <h2>{weather.name}</h2>
+                  <p>{weather.sys.country}</p>
                 </div>
-              ))}
+                <div className="unit-toggle">
+                  <button
+                    onClick={() => setUnit("metric")}
+                    className={unit === "metric" ? "active" : ""}
+                  >
+                    °C
+                  </button>
+                  <button
+                    onClick={() => setUnit("imperial")}
+                    className={unit === "imperial" ? "active" : ""}
+                  >
+                    °F
+                  </button>
+                </div>
+              </div>
+
+              <div className="weather-main">
+                <div className="temp-section">
+                  <WeatherIcon size={64} className="weather-icon" />
+                  <div>
+                    <div className="temperature">
+                      {Math.round(weather.main.temp)}°
+                    </div>
+                    <div className="description">
+                      {weather.weather[0].description}
+                    </div>
+                  </div>
+                </div>
+                <div className="feels-like">
+                  Feels like {Math.round(weather.main.feels_like)}°
+                </div>
+              </div>
+
+              <div className="weather-stats">
+                <div className="stat">
+                  <Wind size={20} />
+                  <span>Wind</span>
+                  <strong>
+                    {Math.round(weather.wind.speed)}{" "}
+                    {unit === "metric" ? "m/s" : "mph"}
+                  </strong>
+                </div>
+                <div className="stat">
+                  <Droplets size={20} />
+                  <span>Humidity</span>
+                  <strong>{weather.main.humidity}%</strong>
+                </div>
+                <div className="stat">
+                  <Eye size={20} />
+                  <span>Visibility</span>
+                  <strong>{(weather.visibility / 1000).toFixed(1)} km</strong>
+                </div>
+                <div className="stat">
+                  <Gauge size={20} />
+                  <span>Pressure</span>
+                  <strong>{weather.main.pressure} hPa</strong>
+                </div>
+              </div>
             </div>
+
+            {forecast.length > 0 && (
+              <div className="forecast-section">
+                <h3>5-Day Forecast</h3>
+                <div className="forecast-grid">
+                  {forecast.map((day, i) => {
+                    const DayIcon = getWeatherIcon(day.weather[0].main);
+                    return (
+                      <div key={i} className="forecast-card">
+                        <div className="forecast-date">{formatDate(day.dt)}</div>
+                        <DayIcon size={32} />
+                        <div className="forecast-temp">
+                          {Math.round(day.main.temp)}°
+                        </div>
+                        <div className="forecast-desc">
+                          {day.weather[0].description}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         )}
-
-        {/* Optional: Link back to home if part of a multi-page app */}
-        <p style={{ textAlign: 'center', marginTop: '20px' }}>
-        </p>
       </div>
+
+      <style>{`
+        .weather-container {
+          min-height: 100vh;
+          background: linear-gradient(to bottom right, #3b82f6, #2563eb, #1d4ed8);
+          padding: 20px;
+          color: white;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        .weather-inner {
+          max-width: 900px;
+          margin: auto;
+        }
+
+        .weather-header {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        .weather-header h1 {
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+        }
+
+        .weather-header p {
+          color: #dbeafe;
+        }
+
+        .search-form {
+          margin-bottom: 20px;
+        }
+
+        .search-bar {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .input-group {
+          position: relative;
+          flex: 1;
+          min-width: 250px;
+        }
+
+        .input-group input {
+          width: 100%;
+          padding: 12px 12px 12px 36px;
+          border-radius: 8px;
+          border: none;
+          outline: none;
+          font-size: 1rem;
+        }
+
+        .search-icon {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: gray;
+        }
+
+        .btn {
+          padding: 12px 18px;
+          border: none;
+          border-radius: 8px;
+          background: white;
+          color: #1d4ed8;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+
+        .btn:hover {
+          background: #e0e7ff;
+        }
+
+        .error-box {
+          max-width: 600px;
+          margin: 20px auto;
+          padding: 12px;
+          background: #fee2e2;
+          color: #991b1b;
+          border-radius: 8px;
+          text-align: center;
+        }
+
+        .loading {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 50px 0;
+        }
+
+        .spin {
+          animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .weather-card {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 20px;
+          padding: 20px;
+          margin-bottom: 20px;
+          backdrop-filter: blur(10px);
+        }
+
+        .weather-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .unit-toggle button {
+          margin-left: 8px;
+          padding: 6px 10px;
+          border-radius: 6px;
+          border: none;
+          cursor: pointer;
+          background: rgba(255, 255, 255, 0.3);
+          color: white;
+        }
+
+        .unit-toggle .active {
+          background: white;
+          color: #1d4ed8;
+          font-weight: bold;
+        }
+
+        .weather-main {
+          margin-top: 20px;
+        }
+
+        .temp-section {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .temperature {
+          font-size: 3.5rem;
+          font-weight: bold;
+        }
+
+        .description {
+          text-transform: capitalize;
+          color: #bfdbfe;
+        }
+
+        .feels-like {
+          margin-top: 10px;
+          color: #dbeafe;
+        }
+
+        .weather-stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+          gap: 10px;
+          margin-top: 20px;
+        }
+
+        .stat {
+          background: rgba(255,255,255,0.15);
+          border-radius: 12px;
+          padding: 10px;
+          text-align: center;
+        }
+
+        .forecast-section {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 20px;
+          padding: 20px;
+        }
+
+        .forecast-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+          gap: 10px;
+        }
+
+        .forecast-card {
+          background: rgba(255,255,255,0.15);
+          border-radius: 12px;
+          padding: 10px;
+          text-align: center;
+        }
+
+        .forecast-date {
+          color: #bfdbfe;
+          font-weight: 500;
+        }
+
+        .forecast-temp {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+
+        .forecast-desc {
+          text-transform: capitalize;
+          color: #dbeafe;
+          font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 600px) {
+          .weather-header h1 {
+            font-size: 1.8rem;
+          }
+          .temperature {
+            font-size: 2.5rem;
+          }
+          .weather-card, .forecast-section {
+            padding: 15px;
+          }
+          .search-bar {
+            flex-direction: column;
+          }
+          .btn {
+            width: 100%;
+          }
+        }
+      `}</style>
     </div>
   );
 }
-
-// ✅ Inline CSS styles
-const styles = {
-  container: {
-    minHeight: '100vh',
-    background: 'linear-gradient(to bottom right, #93c5fd, #d8b4fe)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
-    color: '#111',
-  },
-  card: {
-    background: '#ffffffcc',
-    backdropFilter: 'blur(10px)',
-    padding: '30px',
-    borderRadius: '16px',
-    boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
-    width: '100%',
-    maxWidth: '450px',
-    textAlign: 'center',
-  },
-  title: {
-    fontSize: '2rem',
-    fontWeight: '700',
-    marginBottom: '20px',
-    color: '#1e293b',
-  },
-  searchBar: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    marginBottom: '20px',
-    background: '#f9fafb',
-    borderRadius: '8px',
-    padding: '5px 10px',
-  },
-  input: {
-    flex: 1,
-    border: 'none',
-    outline: 'none',
-    fontSize: '1rem',
-    padding: '10px',
-    background: 'transparent',
-    color: 'black', 
-  },
-  searchBtn: {
-    border: 'none',
-    background: '#6366f1',
-    color: 'white',
-    padding: '10px',
-    borderRadius: '8px',
-    cursor: 'pointer',
-  },
-  weatherSection: {
-    marginTop: '20px',
-  },
-  mainInfo: {
-    marginBottom: '15px',
-  },
-  temp: {
-    fontSize: '3rem',
-    fontWeight: 'bold',
-    margin: '10px 0',
-  },
-  desc: {
-    textTransform: 'capitalize',
-    color: '#4b5563',
-  },
-  details: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '10px',
-    textAlign: 'left',
-    marginTop: '15px',
-    fontSize: '0.9rem',
-    color: '#374151',
-  },
-  detailItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-  },
-  forecast: {
-    marginTop: '30px',
-  },
-  subtitle: {
-    fontWeight: '600',
-    marginBottom: '10px',
-    color: '#1e293b',
-  },
-  forecastGrid: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    gap: '10px',
-    flexWrap: 'wrap',
-  },
-  forecastItem: {
-    background: '#f1f5f9',
-    borderRadius: '12px',
-    padding: '10px',
-    flex: '1',
-    textAlign: 'center',
-  },
-  forecastTime: {
-    fontSize: '0.9rem',
-    color: '#6b7280',
-  },
-  forecastTemp: {
-    fontWeight: '600',
-  },
-};
