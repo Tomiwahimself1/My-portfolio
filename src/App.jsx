@@ -6,6 +6,7 @@ import Myportfolio from './My'
 import WeatherApp from './Weather'
 import TaskManager from './Task'
 import EcommercePlatform from './Ecommerce'
+import Credit from './credit'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
       <Route path="/weather" element={<WeatherApp />} />
       <Route path="/task" element={<TaskManager />} />
       <Route path='/ecommerce' element={<EcommercePlatform />} />
+       <Route path='/credit' element={<Credit />} />
     </Route>
 
 
