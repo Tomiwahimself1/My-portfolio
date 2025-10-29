@@ -223,4 +223,5 @@ const styles = {
   forecastTemp: {
     fontWeight: '600',
   },
+  
 };
