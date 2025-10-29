@@ -42,7 +42,7 @@ export default function Myportfolio() {
       description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
       tech: ['React', 'Node.js', 'MongoDB'],
       image: '🛍️',
-      link: '/ecommerce'
+      //link: '/ecommerce'
     },
     
    
