@@ -41,7 +41,8 @@ export default function Myportfolio() {
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
       tech: ['React', 'Node.js', 'MongoDB'],
-      image: '🛍️'
+      image: '🛍️',
+      link: '/ecommerce'
     },
     
    
