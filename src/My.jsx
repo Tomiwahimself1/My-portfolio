@@ -263,7 +263,10 @@ export default function App() {
           position: relative;
         }
 
-        .hero-content { max-width: 900px; }
+        .hero-content {
+          max-width: 900px;
+          margin-bottom: 5rem;
+        }
 
         .hero-icon {
           font-size: 5rem;
@@ -366,8 +369,13 @@ export default function App() {
           background: ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
           border-radius: 50%;
           text-decoration: none;
-          font-size: 1.5rem;
+          color: inherit;
           transition: all 0.3s ease;
+        }
+
+        .social-icon svg {
+          width: 24px;
+          height: 24px;
         }
 
         .social-icon:hover {
@@ -379,8 +387,14 @@ export default function App() {
         .scroll-indicator {
           position: absolute;
           bottom: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
           text-align: center;
           color: ${darkMode ? '#94a3b8' : '#64748b'};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
         }
 
         .scroll-arrow {
@@ -943,6 +957,8 @@ export default function App() {
           .mobile-menu-btn { display: block; }
           .hero-title { font-size: 2.5rem; }
           .hero-subtitle { font-size: 1.5rem; }
+          .hero-content { margin-bottom: 3rem; }
+          .scroll-indicator { bottom: 1rem; }
           .page-header h1 { font-size: 2rem; }
           .about-content { grid-template-columns: 1fr; gap: 2rem; }
           .profile-pic { font-size: 8rem; }
@@ -1044,17 +1060,25 @@ function HomePage({ navigateToPage }) {
           </div>
 
           <div className="social-icons">
-            <a href="https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <span>🔗</span>
+            <a href="https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
             </a>
-            <a href="https://x.com/Adedinsewo_" target="_blank" rel="noopener noreferrer" className="social-icon">
-              <span>🐦</span>
+            <a href="https://x.com/Adedinsewo_" target="_blank" rel="noopener noreferrer" className="social-icon" title="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
             </a>
-            <a href="#" className="social-icon">
-              <span>💼</span>
+            <a href="https://linkedin.com/in/Adetomiwa" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
             </a>
-            <a href="mailto:adedinsewoadetomiwa7@gmail.com" className="social-icon">
-              <span>📧</span>
+            <a href="mailto:adedinsewoadetomiwa7@gnil.com" className="social-icon" title="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
             </a>
           </div>
         </div>
@@ -1071,7 +1095,7 @@ function HomePage({ navigateToPage }) {
           <div className="stat-label">Years Experience</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">20+</div>
+          <div className="stat-number">50+</div>
           <div className="stat-label">Projects Completed</div>
         </div>
         <div className="stat-card">
@@ -1147,15 +1171,15 @@ function AboutPage() {
 
 function SkillsPage() {
   const skills = [
-    { name: 'React', level: 92, icon: '⚛️', category: 'Frontend' },
-    { name: 'JavaScript', level: 95, icon: '📜', category: 'Frontend' },
+    { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
+    { name: 'JavaScript', level: 85, icon: '📜', category: 'Frontend' },
     { name: 'CSS/SCSS', level: 88, icon: '🎨', category: 'Frontend' },
     { name: 'TypeScript', level: 82, icon: '📘', category: 'Frontend' },
-    { name: 'Node.js', level: 85, icon: '🟢', category: 'Backend' },
+    { name: 'Node.js', level: 75, icon: '🟢', category: 'Backend' },
     { name: 'Python', level: 80, icon: '🐍', category: 'Backend' },
-    { name: 'Express', level: 87, icon: '🚂', category: 'Backend' },
-    { name: 'MongoDB', level: 88, icon: '🍃', category: 'Database' },
-    { name: 'PostgreSQL', level: 86, icon: '🐘', category: 'Database' }
+    { name: 'Express', level: 77, icon: '🚂', category: 'Backend' },
+    { name: 'MongoDB', level: 78, icon: '🍃', category: 'Database' },
+    { name: 'PostgreSQL', level: 76, icon: '🐘', category: 'Database' }
   ];
 
   const categories = ['Frontend', 'Backend', 'Database'];
@@ -1275,14 +1299,14 @@ function TestimonialsPage() {
       rating: 5
     },
     {
-      name: 'Mike chris',
+      name: 'Mike Duch',
       role: 'Product Manager, InnovateCo',
       text: 'Exceptional developer with great communication skills and attention to detail.',
       avatar: '👨‍💼',
       rating: 5
     },
     {
-      name: 'Mary Akinola',
+      name: 'Emily Davis',
       role: 'CTO, WebSolutions',
       text: 'Highly skilled and professional. Would definitely work together again!',
       avatar: '👩‍💻',
@@ -1385,7 +1409,7 @@ function ContactPage() {
           <div className="contact-card">
             <div className="contact-icon">📱</div>
             <h3>Phone</h3>
-            <p>+234 814 600 8685</p>
+            <p>+234 814 4600 8685</p>
           </div>
 
           <div className="contact-card">
