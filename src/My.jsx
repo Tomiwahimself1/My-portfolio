@@ -1053,7 +1053,7 @@ function HomePage({ navigateToPage }) {
             <a href="#" className="social-icon">
               <span>💼</span>
             </a>
-            <a href="mailto:contact@tommydev.com" className="social-icon">
+            <a href="mailto:adedinsewoadetomiwa7@gmail.com" className="social-icon">
               <span>📧</span>
             </a>
           </div>
@@ -1071,7 +1071,7 @@ function HomePage({ navigateToPage }) {
           <div className="stat-label">Years Experience</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">50+</div>
+          <div className="stat-number">20+</div>
           <div className="stat-label">Projects Completed</div>
         </div>
         <div className="stat-card">
@@ -1147,15 +1147,15 @@ function AboutPage() {
 
 function SkillsPage() {
   const skills = [
-    { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
-    { name: 'JavaScript', level: 85, icon: '📜', category: 'Frontend' },
+    { name: 'React', level: 92, icon: '⚛️', category: 'Frontend' },
+    { name: 'JavaScript', level: 95, icon: '📜', category: 'Frontend' },
     { name: 'CSS/SCSS', level: 88, icon: '🎨', category: 'Frontend' },
     { name: 'TypeScript', level: 82, icon: '📘', category: 'Frontend' },
-    { name: 'Node.js', level: 75, icon: '🟢', category: 'Backend' },
+    { name: 'Node.js', level: 85, icon: '🟢', category: 'Backend' },
     { name: 'Python', level: 80, icon: '🐍', category: 'Backend' },
-    { name: 'Express', level: 77, icon: '🚂', category: 'Backend' },
-    { name: 'MongoDB', level: 78, icon: '🍃', category: 'Database' },
-    { name: 'PostgreSQL', level: 76, icon: '🐘', category: 'Database' }
+    { name: 'Express', level: 87, icon: '🚂', category: 'Backend' },
+    { name: 'MongoDB', level: 88, icon: '🍃', category: 'Database' },
+    { name: 'PostgreSQL', level: 86, icon: '🐘', category: 'Database' }
   ];
 
   const categories = ['Frontend', 'Backend', 'Database'];
@@ -1275,14 +1275,14 @@ function TestimonialsPage() {
       rating: 5
     },
     {
-      name: 'Mike Chen',
+      name: 'Mike chris',
       role: 'Product Manager, InnovateCo',
       text: 'Exceptional developer with great communication skills and attention to detail.',
       avatar: '👨‍💼',
       rating: 5
     },
     {
-      name: 'Emily Davis',
+      name: 'Mary Akinola',
       role: 'CTO, WebSolutions',
       text: 'Highly skilled and professional. Would definitely work together again!',
       avatar: '👩‍💻',
@@ -1379,13 +1379,13 @@ function ContactPage() {
           <div className="contact-card">
             <div className="contact-icon">📧</div>
             <h3>Email</h3>
-            <p>contact@tommydev.com</p>
+            <p>adedinsewoadetomiwa7@gmail.com</p>
           </div>
 
           <div className="contact-card">
             <div className="contact-icon">📱</div>
             <h3>Phone</h3>
-            <p>+234 123 456 7890</p>
+            <p>+234 814 600 8685</p>
           </div>
 
           <div className="contact-card">
@@ -1409,7 +1409,7 @@ function ContactPage() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="John Doe"
+              placeholder="Name"
               required
             />
           </div>
@@ -1421,7 +1421,7 @@ function ContactPage() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="john@example.com"
+              placeholder="Tom@example.com"
               required
             />
           </div>
