@@ -1095,11 +1095,11 @@ function HomePage({ navigateToPage }) {
           <div className="stat-label">Years Experience</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">50+</div>
+          <div className="stat-number">30+</div>
           <div className="stat-label">Projects Completed</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">30+</div>
+          <div className="stat-number">25+</div>
           <div className="stat-label">Happy Clients</div>
         </div>
         <div className="stat-card">
