@@ -1163,6 +1163,8 @@ function HomePage({ navigateToPage }) {
     { target: 25, current: 0, label: 'Happy Clients', suffix: '+' },
     { target: 15, current: 0, label: 'Awards Won', suffix: '+' }
   ]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = React.useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -1172,31 +1174,52 @@ function HomePage({ navigateToPage }) {
   }, []);
 
   useEffect(() => {
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const stepDuration = duration / steps;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            
+            const duration = 2000;
+            const steps = 60;
+            const stepDuration = duration / steps;
 
-    stats.forEach((stat, index) => {
-      let currentStep = 0;
-      const increment = stat.target / steps;
+            stats.forEach((stat, index) => {
+              let currentStep = 0;
+              const increment = stat.target / steps;
 
-      const timer = setInterval(() => {
-        currentStep++;
-        if (currentStep <= steps) {
-          setStats(prevStats => {
-            const newStats = [...prevStats];
-            newStats[index] = {
-              ...newStats[index],
-              current: Math.min(Math.round(increment * currentStep), stat.target)
-            };
-            return newStats;
-          });
-        } else {
-          clearInterval(timer);
-        }
-      }, stepDuration);
-    });
-  }, []);
+              const timer = setInterval(() => {
+                currentStep++;
+                if (currentStep <= steps) {
+                  setStats(prevStats => {
+                    const newStats = [...prevStats];
+                    newStats[index] = {
+                      ...newStats[index],
+                      current: Math.min(Math.round(increment * currentStep), stat.target)
+                    };
+                    return newStats;
+                  });
+                } else {
+                  clearInterval(timer);
+                }
+              }, stepDuration);
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, [hasAnimated]);
 
   return (
     <div className="page home-page">
@@ -1253,7 +1276,7 @@ function HomePage({ navigateToPage }) {
         </div>
       </div>
 
-      <div className="home-stats">
+      <div className="home-stats" ref={statsRef}>
         {stats.map((stat, index) => (
           <div key={index} className="stat-card">
             <div className="stat-number">{stat.current}{stat.suffix}</div>
@@ -1325,6 +1348,8 @@ function AboutPage() {
 
 function SkillsPage() {
   const [animatedSkills, setAnimatedSkills] = useState([]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const skillsRef = React.useRef(null);
   
   const skills = [
     { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
@@ -1341,34 +1366,57 @@ function SkillsPage() {
   const categories = ['Frontend', 'Backend', 'Database'];
 
   useEffect(() => {
-    const duration = 2000;
-    const steps = 60;
-    const stepDuration = duration / steps;
-
     const initialSkills = skills.map(skill => ({ ...skill, currentLevel: 0 }));
     setAnimatedSkills(initialSkills);
-
-    skills.forEach((skill, index) => {
-      let currentStep = 0;
-      const increment = skill.level / steps;
-
-      const timer = setInterval(() => {
-        currentStep++;
-        if (currentStep <= steps) {
-          setAnimatedSkills(prevSkills => {
-            const newSkills = [...prevSkills];
-            newSkills[index] = {
-              ...newSkills[index],
-              currentLevel: Math.min(Math.round(increment * currentStep), skill.level)
-            };
-            return newSkills;
-          });
-        } else {
-          clearInterval(timer);
-        }
-      }, stepDuration);
-    });
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            
+            const duration = 2000;
+            const steps = 60;
+            const stepDuration = duration / steps;
+
+            skills.forEach((skill, index) => {
+              let currentStep = 0;
+              const increment = skill.level / steps;
+
+              const timer = setInterval(() => {
+                currentStep++;
+                if (currentStep <= steps) {
+                  setAnimatedSkills(prevSkills => {
+                    const newSkills = [...prevSkills];
+                    newSkills[index] = {
+                      ...newSkills[index],
+                      currentLevel: Math.min(Math.round(increment * currentStep), skill.level)
+                    };
+                    return newSkills;
+                  });
+                } else {
+                  clearInterval(timer);
+                }
+              }, stepDuration);
+            });
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+
+    return () => {
+      if (skillsRef.current) {
+        observer.unobserve(skillsRef.current);
+      }
+    };
+  }, [hasAnimated]);
 
   return (
     <div className="page skills-page">
@@ -1377,24 +1425,26 @@ function SkillsPage() {
         <p>Technologies I work with</p>
       </div>
 
-      {categories.map((category) => (
-        <div key={category} className="skills-category">
-          <h2 className="category-title">{category}</h2>
-          <div className="skills-grid">
-            {animatedSkills.filter(s => s.category === category).map((skill, idx) => (
-              <div key={skill.name} className="skill-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="skill-icon">{skill.icon}</div>
-                <h3>{skill.name}</h3>
-                <div className="skill-bar">
-                  <div className="skill-fill" style={{ width: `${skill.currentLevel}%` }}>
-                    <span className="skill-percent">{skill.currentLevel}%</span>
+      <div ref={skillsRef}>
+        {categories.map((category) => (
+          <div key={category} className="skills-category">
+            <h2 className="category-title">{category}</h2>
+            <div className="skills-grid">
+              {animatedSkills.filter(s => s.category === category).map((skill, idx) => (
+                <div key={skill.name} className="skill-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
+                  <div className="skill-icon">{skill.icon}</div>
+                  <h3>{skill.name}</h3>
+                  <div className="skill-bar">
+                    <div className="skill-fill" style={{ width: `${skill.currentLevel}%` }}>
+                      <span className="skill-percent">{skill.currentLevel}%</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
