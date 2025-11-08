@@ -1645,7 +1645,7 @@ function ContactPage() {
           <div className="contact-card">
             <div className="contact-icon">📱</div>
             <h3>Phone</h3>
-            <p>+234 814 4600 8685</p>
+            <p>+234 81 4600 8685</p>
           </div>
 
           <div className="contact-card">
