@@ -955,17 +955,138 @@ export default function App() {
         @media (max-width: 968px) {
           .nav-links { display: none; }
           .mobile-menu-btn { display: block; }
-          .hero-title { font-size: 2.5rem; }
-          .hero-subtitle { font-size: 1.5rem; }
-          .hero-content { margin-bottom: 3rem; }
-          .scroll-indicator { bottom: 1rem; }
-          .page-header h1 { font-size: 2rem; }
-          .about-content { grid-template-columns: 1fr; gap: 2rem; }
+          
+          /* Hero Section */
+          .hero-section { padding: 3rem 1.5rem; }
+          .hero-title { font-size: 2.8rem; line-height: 1.2; }
+          .hero-subtitle { font-size: 1.6rem; min-height: 70px; }
+          .hero-description { font-size: 1.15rem; padding: 0 1rem; }
+          .hero-icon { font-size: 4rem; margin-bottom: 1.5rem; }
+          .hero-content { margin-bottom: 4rem; }
+          .scroll-indicator { bottom: 1.5rem; }
+          
+          /* Buttons */
+          .hero-buttons { 
+            flex-direction: column; 
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+          }
+          .btn { 
+            width: 100%;
+            padding: 1.2rem 2rem;
+            font-size: 1.05rem;
+          }
+          
+          /* Social Icons */
+          .social-icons { gap: 1.5rem; }
+          .social-icon { width: 55px; height: 55px; }
+          
+          /* Stats */
+          .home-stats { 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 3rem 1.5rem;
+          }
+          .stat-card { padding: 2.5rem 1.5rem; }
+          .stat-number { font-size: 2.5rem; }
+          .stat-label { font-size: 1rem; }
+          
+          /* Page Headers */
+          .page-header { padding: 3rem 1.5rem 2rem; }
+          .page-header h1 { font-size: 2.5rem; }
+          .page-header p { font-size: 1.15rem; }
+          
+          /* About Section */
+          .about-content { 
+            grid-template-columns: 1fr; 
+            gap: 2.5rem;
+            padding: 1.5rem;
+          }
+          .profile-pic { 
+            font-size: 10rem; 
+            padding: 3rem;
+          }
+          .about-text h2 { font-size: 2.2rem; }
+          .about-text p { font-size: 1.05rem; }
+          
+          /* Timeline */
+          .timeline-content h3 { font-size: 1.2rem; }
+          .timeline-content p { font-size: 0.95rem; }
+          
+          /* Skills */
+          .skills-category { padding: 0 1.5rem; margin-bottom: 3rem; }
+          .category-title { font-size: 1.8rem; }
+          .skills-grid { 
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          .skill-card { padding: 2.5rem 2rem; }
+          .skill-icon { font-size: 3.5rem; }
+          
+          /* Projects */
+          .projects-grid { 
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+          }
+          .project-card { border-radius: 25px; }
+          .project-image { 
+            font-size: 5rem; 
+            padding: 2.5rem;
+          }
+          .project-content { padding: 2rem 1.5rem; }
+          .project-content h3 { font-size: 1.4rem; }
+          .project-content p { font-size: 1.05rem; }
+          
+          /* Testimonials */
+          .testimonials-container { padding: 1.5rem; }
+          .testimonial-card { 
+            padding: 3rem 2rem; 
+            border-radius: 25px;
+          }
+          .testimonial-avatar { font-size: 4rem; }
+          .testimonial-text { font-size: 1.15rem; }
+          .testimonial-name { font-size: 1.2rem; }
+          .all-testimonials { 
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+          }
+          .testimonial-mini { padding: 2rem 1.5rem; }
+          
+          /* Contact */
+          .contact-container { 
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+          }
+          .contact-info { gap: 1.5rem; }
+          .contact-card { padding: 2.5rem 2rem; }
+          .contact-icon { font-size: 3rem; }
+          .contact-form { padding: 2.5rem 2rem; }
+          .form-group input,
+          .form-group textarea { 
+            padding: 1.2rem;
+            font-size: 1.05rem;
+          }
+          
+          /* Footer */
+          .footer-content { 
+            padding: 2.5rem 1.5rem;
+            gap: 2.5rem;
+          }
+          .footer-section h3 { font-size: 1.4rem; }
+          .footer-section h4 { font-size: 1.1rem; }
+          .footer-section p,
+          .footer-section button { font-size: 1rem; }
+        }
+        
+        @media (max-width: 480px) {
+          .hero-title { font-size: 2.2rem; }
+          .hero-subtitle { font-size: 1.4rem; }
+          .home-stats { grid-template-columns: 1fr; }
           .profile-pic { font-size: 8rem; }
-          .contact-container { grid-template-columns: 1fr; }
-          .projects-grid, .skills-grid, .all-testimonials { grid-template-columns: 1fr; }
-          .hero-buttons { flex-direction: column; }
-          .btn { width: 100%; }
         }
       `}</style>
 
@@ -1075,7 +1196,7 @@ function HomePage({ navigateToPage }) {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </a>
-            <a href="mailto:adedinsewoadetomiwa7@gnil.com" className="social-icon" title="Email">
+            <a href="mailto:adedinsewoadetomiwa7@gmail.com" className="social-icon" title="Email">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
@@ -1495,7 +1616,7 @@ function Footer({ navigateToPage }) {
           <div className="footer-links">
             <a href="https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://x.com/Adedinsewo_" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://linkedin.com/in/Adetomiwa" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </div>
