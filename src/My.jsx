@@ -80,6 +80,16 @@ export default function App() {
           50% { transform: translateY(10px); }
         }
 
+        @keyframes slideInFromLeft {
+          from { opacity: 0; transform: translateX(-50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInFromRight {
+          from { opacity: 0; transform: translateX(50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+
         .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
         .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
         .animate-slide-in-right { animation: slideInRight 0.6s ease-out forwards; }
@@ -1147,12 +1157,45 @@ export default function App() {
 function HomePage({ navigateToPage }) {
   const [currentWord, setCurrentWord] = useState(0);
   const words = ['Developer', 'Designer', 'Creator', 'Innovator'];
+  const [stats, setStats] = useState([
+    { target: 5, current: 0, label: 'Years Experience', suffix: '+' },
+    { target: 30, current: 0, label: 'Projects Completed', suffix: '+' },
+    { target: 25, current: 0, label: 'Happy Clients', suffix: '+' },
+    { target: 15, current: 0, label: 'Awards Won', suffix: '+' }
+  ]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    stats.forEach((stat, index) => {
+      let currentStep = 0;
+      const increment = stat.target / steps;
+
+      const timer = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+          setStats(prevStats => {
+            const newStats = [...prevStats];
+            newStats[index] = {
+              ...newStats[index],
+              current: Math.min(Math.round(increment * currentStep), stat.target)
+            };
+            return newStats;
+          });
+        } else {
+          clearInterval(timer);
+        }
+      }, stepDuration);
+    });
   }, []);
 
   return (
@@ -1181,22 +1224,22 @@ function HomePage({ navigateToPage }) {
           </div>
 
           <div className="social-icons">
-            <a href="https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub">
+            <a href="https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub" style={{ animation: 'slideInFromLeft 0.8s ease-out forwards', animationDelay: '0.2s', opacity: 0 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
               </svg>
             </a>
-            <a href="https://x.com/Adedinsewo_" target="_blank" rel="noopener noreferrer" className="social-icon" title="Twitter">
+            <a href="https://x.com/Adedinsewo_" target="_blank" rel="noopener noreferrer" className="social-icon" title="Twitter" style={{ animation: 'slideInFromLeft 0.8s ease-out forwards', animationDelay: '0.4s', opacity: 0 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>
-            <a href="https://linkedin.com/in/Adetomiwa" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
+            <a href="https://linkedin.com/in/Adetomiwa" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn" style={{ animation: 'slideInFromRight 0.8s ease-out forwards', animationDelay: '0.4s', opacity: 0 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </a>
-            <a href="mailto:adedinsewoadetomiwa7@gmail.com" className="social-icon" title="Email">
+            <a href="mailto:adedinsewoadetomiwa7@gmail.com" className="social-icon" title="Email" style={{ animation: 'slideInFromRight 0.8s ease-out forwards', animationDelay: '0.2s', opacity: 0 }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
@@ -1211,22 +1254,12 @@ function HomePage({ navigateToPage }) {
       </div>
 
       <div className="home-stats">
-        <div className="stat-card">
-          <div className="stat-number">5+</div>
-          <div className="stat-label">Years Experience</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">30+</div>
-          <div className="stat-label">Projects Completed</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">25+</div>
-          <div className="stat-label">Happy Clients</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">15+</div>
-          <div className="stat-label">Awards Won</div>
-        </div>
+        {stats.map((stat, index) => (
+          <div key={index} className="stat-card">
+            <div className="stat-number">{stat.current}{stat.suffix}</div>
+            <div className="stat-label">{stat.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -1291,6 +1324,8 @@ function AboutPage() {
 }
 
 function SkillsPage() {
+  const [animatedSkills, setAnimatedSkills] = useState([]);
+  
   const skills = [
     { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
     { name: 'JavaScript', level: 85, icon: '📜', category: 'Frontend' },
@@ -1305,6 +1340,36 @@ function SkillsPage() {
 
   const categories = ['Frontend', 'Backend', 'Database'];
 
+  useEffect(() => {
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    const initialSkills = skills.map(skill => ({ ...skill, currentLevel: 0 }));
+    setAnimatedSkills(initialSkills);
+
+    skills.forEach((skill, index) => {
+      let currentStep = 0;
+      const increment = skill.level / steps;
+
+      const timer = setInterval(() => {
+        currentStep++;
+        if (currentStep <= steps) {
+          setAnimatedSkills(prevSkills => {
+            const newSkills = [...prevSkills];
+            newSkills[index] = {
+              ...newSkills[index],
+              currentLevel: Math.min(Math.round(increment * currentStep), skill.level)
+            };
+            return newSkills;
+          });
+        } else {
+          clearInterval(timer);
+        }
+      }, stepDuration);
+    });
+  }, []);
+
   return (
     <div className="page skills-page">
       <div className="page-header animate-slide-in">
@@ -1316,13 +1381,13 @@ function SkillsPage() {
         <div key={category} className="skills-category">
           <h2 className="category-title">{category}</h2>
           <div className="skills-grid">
-            {skills.filter(s => s.category === category).map((skill, idx) => (
+            {animatedSkills.filter(s => s.category === category).map((skill, idx) => (
               <div key={skill.name} className="skill-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
                 <div className="skill-icon">{skill.icon}</div>
                 <h3>{skill.name}</h3>
                 <div className="skill-bar">
-                  <div className="skill-fill" style={{ width: `${skill.level}%` }}>
-                    <span className="skill-percent">{skill.level}%</span>
+                  <div className="skill-fill" style={{ width: `${skill.currentLevel}%` }}>
+                    <span className="skill-percent">{skill.currentLevel}%</span>
                   </div>
                 </div>
               </div>
@@ -1530,7 +1595,7 @@ function ContactPage() {
           <div className="contact-card">
             <div className="contact-icon">📱</div>
             <h3>Phone</h3>
-            <p>+234 814 600 8685</p>
+            <p>+234 814 4600 8685</p>
           </div>
 
           <div className="contact-card">
