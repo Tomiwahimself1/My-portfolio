@@ -1352,9 +1352,10 @@ function SkillsPage() {
   const skillsRef = React.useRef(null);
   
   const skills = [
-    { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
-    { name: 'JavaScript', level: 85, icon: '📜', category: 'Frontend' },
+    { name: 'HTML', level: 98, icon: '🔷', category: 'Frontend' },
     { name: 'CSS/SCSS', level: 88, icon: '🎨', category: 'Frontend' },
+    { name: 'JavaScript', level: 85, icon: '📜', category: 'Frontend' },
+    { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
     { name: 'TypeScript', level: 82, icon: '📘', category: 'Frontend' },
     { name: 'Node.js', level: 75, icon: '🟢', category: 'Backend' },
     { name: 'Python', level: 80, icon: '🐍', category: 'Backend' },
