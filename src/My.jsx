@@ -1156,7 +1156,7 @@ export default function App() {
 
 function HomePage({ navigateToPage }) {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Developer', 'Designer', 'Creator', 'Innovator'];
+  const words = ['Engineer', 'Developer', 'Designer', 'Creator', 'Innovator'];
   const [stats, setStats] = useState([
     { target: 5, current: 0, label: 'Years Experience', suffix: '+' },
     { target: 30, current: 0, label: 'Projects Completed', suffix: '+' },
