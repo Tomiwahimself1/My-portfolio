@@ -992,15 +992,15 @@ export default function App() {
           .social-icons { gap: 1.5rem; }
           .social-icon { width: 55px; height: 55px; }
           
-          /* Stats */
+          /* Stats - Keep 2 columns on tablets */
           .home-stats { 
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             padding: 3rem 1.5rem;
           }
-          .stat-card { padding: 2.5rem 1.5rem; }
+          .stat-card { padding: 2rem 1.5rem; }
           .stat-number { font-size: 2.5rem; }
-          .stat-label { font-size: 1rem; }
+          .stat-label { font-size: 0.95rem; }
           
           /* Page Headers */
           .page-header { padding: 3rem 1.5rem 2rem; }
@@ -1024,15 +1024,16 @@ export default function App() {
           .timeline-content h3 { font-size: 1.2rem; }
           .timeline-content p { font-size: 0.95rem; }
           
-          /* Skills */
+          /* Skills - Keep 2 columns on tablets */
           .skills-category { padding: 0 1.5rem; margin-bottom: 3rem; }
           .category-title { font-size: 1.8rem; }
           .skills-grid { 
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
           }
-          .skill-card { padding: 2.5rem 2rem; }
-          .skill-icon { font-size: 3.5rem; }
+          .skill-card { padding: 2rem 1.5rem; }
+          .skill-icon { font-size: 3rem; }
+          .skill-card h3 { font-size: 1.3rem; }
           
           /* Projects */
           .projects-grid { 
@@ -1092,10 +1093,28 @@ export default function App() {
           .footer-section button { font-size: 1rem; }
         }
         
+        @media (max-width: 600px) {
+          /* Stats - Single column on small phones */
+          .home-stats { 
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            padding: 2rem 1rem;
+          }
+          .stat-card { padding: 1.8rem 1.2rem; }
+          .stat-number { font-size: 2.2rem; }
+          
+          /* Skills - Single column on small phones */
+          .skills-category { padding: 0 1rem; margin-bottom: 2rem; }
+          .skills-grid { 
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+          }
+          .skill-card { padding: 1.8rem 1.5rem; }
+        }
+        
         @media (max-width: 480px) {
           .hero-title { font-size: 2.2rem; }
           .hero-subtitle { font-size: 1.4rem; }
-          .home-stats { grid-template-columns: 1fr; }
           .profile-pic { font-size: 8rem; }
         }
       `}</style>
@@ -1156,7 +1175,7 @@ export default function App() {
 
 function HomePage({ navigateToPage }) {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Engineer', 'Developer', 'Designer', 'Creator', 'Innovator'];
+  const words = ['Developer', 'Designer', 'Creator', 'Innovator'];
   const [stats, setStats] = useState([
     { target: 5, current: 0, label: 'Years Experience', suffix: '+' },
     { target: 30, current: 0, label: 'Projects Completed', suffix: '+' },
@@ -1646,7 +1665,7 @@ function ContactPage() {
           <div className="contact-card">
             <div className="contact-icon">📱</div>
             <h3>Phone</h3>
-            <p>+234 81 4600 8685</p>
+            <p>+234 814 4600 8685</p>
           </div>
 
           <div className="contact-card">
