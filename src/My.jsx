@@ -21,12 +21,12 @@ export default function App() {
   };
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: '🏠'},
-    { id: 'about', label: 'About', icon: '👤' },
-    { id: 'skills', label: 'Skills', icon: '⚡' },
-    { id: 'projects', label: 'Projects', icon: '💼' },
-    { id: 'testimonials', label: 'Testimonials', icon: '💬' },
-    { id: 'contact', label: 'Contact', icon: '📧' }
+    { id: 'home', label: 'Home'},
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'testimonials', label: 'Testimonials' },
+    { id: 'contact', label: 'Contact' }
   ];
 
   const bgGradient = darkMode 
