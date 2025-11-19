@@ -25,6 +25,7 @@ export default function App() {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
+    { id: 'certificates', label: 'Certificates' },
     { id: 'testimonials', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' }
   ];
@@ -532,6 +533,38 @@ export default function App() {
           font-size: 1rem;
         }
 
+        .cv-download-section {
+          text-align: center;
+          margin: 3rem 0;
+          padding: 3rem 2rem;
+        }
+
+        .cv-download-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1.2rem 3rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 50px;
+          font-size: 1.2rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+
+        .cv-download-btn:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .cv-download-btn svg {
+          width: 24px;
+          height: 24px;
+        }
+
         .skills-category {
           max-width: 1200px;
           margin: 0 auto 4rem;
@@ -673,6 +706,98 @@ export default function App() {
         }
 
         .project-link:hover { gap: 1rem; }
+
+        .certificates-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2rem;
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 2rem;
+        }
+
+        .certificate-card {
+          background: ${darkMode ? 'rgba(30, 41, 59, 0.5)' : 'rgba(255, 255, 255, 0.5)'};
+          backdrop-filter: blur(10px);
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+          transition: all 0.3s ease;
+        }
+
+        .certificate-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .certificate-icon {
+          font-size: 5rem;
+          text-align: center;
+          padding: 3rem;
+          background: ${darkMode ? 'rgba(102, 126, 234, 0.1)' : 'rgba(102, 126, 234, 0.05)'};
+        }
+
+        .certificate-content {
+          padding: 2rem;
+        }
+
+        .certificate-content h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+          color: #667eea;
+        }
+
+        .certificate-issuer {
+          color: ${darkMode ? '#94a3b8' : '#64748b'};
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .certificate-date {
+          color: ${darkMode ? '#64748b' : '#94a3b8'};
+          font-size: 0.9rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .certificate-actions {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .certificate-btn {
+          flex: 1;
+          padding: 0.8rem 1.5rem;
+          border: none;
+          border-radius: 12px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          text-decoration: none;
+        }
+
+        .certificate-btn-primary {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+        }
+
+        .certificate-btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .certificate-btn-secondary {
+          background: ${darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
+          color: inherit;
+        }
+
+        .certificate-btn-secondary:hover {
+          background: ${darkMode ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)'};
+        }
 
         .testimonials-container {
           max-width: 900px;
@@ -966,7 +1091,6 @@ export default function App() {
           .nav-links { display: none; }
           .mobile-menu-btn { display: block; }
           
-          /* Hero Section */
           .hero-section { padding: 3rem 1.5rem; }
           .hero-title { font-size: 2.8rem; line-height: 1.2; }
           .hero-subtitle { font-size: 1.6rem; min-height: 70px; }
@@ -975,7 +1099,6 @@ export default function App() {
           .hero-content { margin-bottom: 4rem; }
           .scroll-indicator { bottom: 1.5rem; }
           
-          /* Buttons */
           .hero-buttons { 
             flex-direction: column; 
             width: 100%;
@@ -988,11 +1111,9 @@ export default function App() {
             font-size: 1.05rem;
           }
           
-          /* Social Icons */
           .social-icons { gap: 1.5rem; }
           .social-icon { width: 55px; height: 55px; }
           
-          /* Stats - Keep 2 columns on tablets */
           .home-stats { 
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
@@ -1002,12 +1123,10 @@ export default function App() {
           .stat-number { font-size: 2.5rem; }
           .stat-label { font-size: 0.95rem; }
           
-          /* Page Headers */
           .page-header { padding: 3rem 1.5rem 2rem; }
           .page-header h1 { font-size: 2.5rem; }
           .page-header p { font-size: 1.15rem; }
           
-          /* About Section */
           .about-content { 
             grid-template-columns: 1fr; 
             gap: 2.5rem;
@@ -1020,11 +1139,9 @@ export default function App() {
           .about-text h2 { font-size: 2.2rem; }
           .about-text p { font-size: 1.05rem; }
           
-          /* Timeline */
           .timeline-content h3 { font-size: 1.2rem; }
           .timeline-content p { font-size: 0.95rem; }
           
-          /* Skills - Keep 2 columns on tablets */
           .skills-category { padding: 0 1.5rem; margin-bottom: 3rem; }
           .category-title { font-size: 1.8rem; }
           .skills-grid { 
@@ -1035,7 +1152,6 @@ export default function App() {
           .skill-icon { font-size: 3rem; }
           .skill-card h3 { font-size: 1.3rem; }
           
-          /* Projects */
           .projects-grid { 
             grid-template-columns: 1fr;
             gap: 2rem;
@@ -1050,7 +1166,6 @@ export default function App() {
           .project-content h3 { font-size: 1.4rem; }
           .project-content p { font-size: 1.05rem; }
           
-          /* Testimonials */
           .testimonials-container { padding: 1.5rem; }
           .testimonial-card { 
             padding: 3rem 2rem; 
@@ -1066,7 +1181,6 @@ export default function App() {
           }
           .testimonial-mini { padding: 2rem 1.5rem; }
           
-          /* Contact */
           .contact-container { 
             grid-template-columns: 1fr;
             gap: 2rem;
@@ -1082,7 +1196,31 @@ export default function App() {
             font-size: 1.05rem;
           }
           
-          /* Footer */
+          .cv-download-section { padding: 2.5rem 1.5rem; }
+          .cv-download-btn { 
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+          }
+          
+          .certificates-grid { 
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+          }
+          .certificate-card { border-radius: 25px; }
+          .certificate-icon { 
+            font-size: 4rem;
+            padding: 2.5rem;
+          }
+          .certificate-content { padding: 2rem 1.5rem; }
+          .certificate-content h3 { font-size: 1.4rem; }
+          .certificate-actions { 
+            flex-direction: column;
+          }
+          .certificate-btn { 
+            padding: 1rem 1.5rem;
+          }
+          
           .footer-content { 
             padding: 2.5rem 1.5rem;
             gap: 2.5rem;
@@ -1094,7 +1232,6 @@ export default function App() {
         }
         
         @media (max-width: 600px) {
-          /* Stats - Single column on small phones */
           .home-stats { 
             grid-template-columns: 1fr;
             gap: 1.2rem;
@@ -1103,13 +1240,31 @@ export default function App() {
           .stat-card { padding: 1.8rem 1.2rem; }
           .stat-number { font-size: 2.2rem; }
           
-          /* Skills - Single column on small phones */
           .skills-category { padding: 0 1rem; margin-bottom: 2rem; }
           .skills-grid { 
             grid-template-columns: 1fr;
             gap: 1.2rem;
           }
           .skill-card { padding: 1.8rem 1.5rem; }
+          
+          .cv-download-section { padding: 2rem 1rem; }
+          .cv-download-btn { 
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            width: 100%;
+          }
+          
+          .certificates-grid { 
+            padding: 1rem;
+            gap: 1.2rem;
+          }
+          .certificate-icon { font-size: 3.5rem; padding: 2rem; }
+          .certificate-content { padding: 1.5rem; }
+          .certificate-content h3 { font-size: 1.2rem; }
+          .certificate-btn { 
+            padding: 0.9rem 1.2rem;
+            font-size: 0.95rem;
+          }
         }
         
         @media (max-width: 480px) {
@@ -1165,6 +1320,7 @@ export default function App() {
       {currentPage === 'about' && <AboutPage />}
       {currentPage === 'skills' && <SkillsPage />}
       {currentPage === 'projects' && <ProjectsPage />}
+      {currentPage === 'certificates' && <CertificatesPage />}
       {currentPage === 'testimonials' && <TestimonialsPage />}
       {currentPage === 'contact' && <ContactPage />}
 
@@ -1361,6 +1517,17 @@ function AboutPage() {
           </div>
         </div>
       </div>
+
+      <div className="cv-download-section animate-fade-in">
+        <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#667eea' }}>Download My CV</h2>
+        <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>Get a detailed overview of my experience and skills</p>
+        <a href="website/src/Adetomiwa's CV copy.pdf" download className="cv-download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Download CV
+        </a>
+      </div>
     </div>
   );
 }
@@ -1535,6 +1702,95 @@ function ProjectsPage() {
                 ))}
               </div>
               <a href={project.link} className="project-link">View Project →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CertificatesPage() {
+  const certificates = [
+    {
+      title: 'AWS Certified Solutions Architect',
+      issuer: 'Amazon Web Services',
+      date: 'January 2024',
+      icon: '☁️',
+      credentialUrl: '#',
+      certificateUrl: '/path-to-certificate.pdf'
+    },
+    {
+      title: 'React Advanced Certification',
+      issuer: 'Meta',
+      date: 'December 2023',
+      icon: '⚛️',
+      credentialUrl: '#',
+      certificateUrl: '/path-to-certificate.pdf'
+    },
+    {
+      title: 'Full Stack Web Development',
+      issuer: 'Coursera',
+      date: 'November 2023',
+      icon: '🎓',
+      credentialUrl: '#',
+      certificateUrl: '/path-to-certificate.pdf'
+    },
+    {
+      title: 'JavaScript Algorithms and Data Structures',
+      issuer: 'freeCodeCamp',
+      date: 'October 2023',
+      icon: '📜',
+      credentialUrl: '#',
+      certificateUrl: '/path-to-certificate.pdf'
+    },
+    {
+      title: 'Python for Data Science',
+      issuer: 'IBM',
+      date: 'September 2023',
+      icon: '🐍',
+      credentialUrl: '#',
+      certificateUrl: '/path-to-certificate.pdf'
+    },
+    {
+      title: 'UI/UX Design Specialization',
+      issuer: 'Google',
+      date: 'August 2023',
+      icon: '🎨',
+      credentialUrl: '#',
+      certificateUrl: '/path-to-certificate.pdf'
+    }
+  ];
+
+  return (
+    <div className="page certificates-page">
+      <div className="page-header animate-slide-in">
+        <h1>Certificates & Achievements</h1>
+        <p>Professional certifications and completed courses</p>
+      </div>
+
+      <div className="certificates-grid">
+        {certificates.map((cert, idx) => (
+          <div key={idx} className="certificate-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
+            <div className="certificate-icon">{cert.icon}</div>
+            <div className="certificate-content">
+              <h3>{cert.title}</h3>
+              <p className="certificate-issuer">{cert.issuer}</p>
+              <p className="certificate-date">Issued: {cert.date}</p>
+              <div className="certificate-actions">
+                <a href={cert.certificateUrl} download className="certificate-btn certificate-btn-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-6 4h12v2H6v-2z"/>
+                  </svg>
+                  Download
+                </a>
+                <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="certificate-btn certificate-btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h7v-2zm9-12v8c0 1.1-.9 2-2 2h-6v-2h6V7h-2V5h2c1.1 0 2 .9 2 2z"/>
+                  </svg>
+                  Verify
+                </a>
+              </div>
             </div>
           </div>
         ))}
@@ -1743,6 +1999,7 @@ function Footer({ navigateToPage }) {
           <button onClick={() => navigateToPage('home')}>Home</button>
           <button onClick={() => navigateToPage('about')}>About</button>
           <button onClick={() => navigateToPage('projects')}>Projects</button>
+          <button onClick={() => navigateToPage('certificates')}>Certificates</button>
           <button onClick={() => navigateToPage('contact')}>Contact</button>
         </div>
 
