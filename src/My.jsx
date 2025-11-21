@@ -1891,7 +1891,7 @@ function AboutPage({ darkMode }) {
       <div className="cv-download-section">
         <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#667eea' }}>Download My CV</h2>
         <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>Get a detailed overview of my experience and skills</p>
-        <a href="website/src/ADETOMIWA CV copy.pdf" download className="cv-download-btn">
+        <a href="/ADETOMIWA CV copy.pdf" download className="cv-download-btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
@@ -2082,6 +2082,30 @@ function ProjectsPage({ darkMode }) {
 
 function CertificatesPage({ darkMode }) {
   const certificates = [
+    {
+      title: 'JavaScript Expert',
+      issuer: 'Meta',
+      date: 'Nov. 13, 2025.',
+      icon: '📜',
+      credentialUrl: 'https://coursera.org/verify/CO61ZPZ7YL00',
+      certificateUrl: '/JavaScript.pdf'
+    },
+     {
+      title: 'Business Development, Sales and marketing Professional Diploma',
+      issuer: 'Udemy',
+      date: 'Nov. 1, 2025.',
+      icon: '💼',
+      credentialUrl: 'https://www.udemy.com/certificate/UC-5aa1ecb3-55f8-4524-85f7-6ffdf03d20cb/',
+      certificateUrl: '/Business.pdf'
+    },
+    {
+      title: 'Market Research: Strategies for Business DecisionMaking',
+      issuer: 'Udemy',
+      date: 'Nov. 21 2025.',
+      icon: '📈',
+      credentialUrl: 'https://www.udemy.com/certificate/UC-0d20ebcf-0d64-4772-96b9-9363ef4f56c0/',
+      certificateUrl: '/Market Research.pdf'
+    },
     {
       title: 'AWS Certified Solutions Architect',
       issuer: 'Amazon Web Services',
