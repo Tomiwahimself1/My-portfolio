@@ -1,34 +1,25 @@
-import React from 'react'
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import Home from './Home'
-import About from './About'
-import Myportfolio from './My'
-import WeatherApp from './Weather'
-import TaskManager from './Task'
-import EcommercePlatform from './Ecommerce'
-
-
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/my-portfolio" element={<Myportfolio />} />
-      <Route path="/weather" element={<WeatherApp />} />
-      <Route path="/task" element={<TaskManager />} />
-      <Route path="/ecommerce" element={<EcommercePlatform />} />
-    </Route>
-
-
-  )
-)
-
-export default function App() {
+function App() {
   return (
-    <RouterProvider router={router} />
-  )
+    <div style={styles.container}>
+      <h1>This site is under maintenance</h1>
+      <p>I’ll be back soon 🚧</p>
+    </div>
+  );
 }
 
 
+const styles = {
+  container: {
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#0f172a",
+    color: "#e5e7eb",
+    fontFamily: "system-ui, sans-serif",
+    textAlign: "center",
+  },
+};
 
+export default App;
