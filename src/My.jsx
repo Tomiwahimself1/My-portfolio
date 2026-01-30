@@ -1724,7 +1724,8 @@ function HomePage({ navigateToPage, darkMode }) {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated) {
             setHasAnimated(true);
-            
+
+
 
         
             const duration = 2000;
