@@ -1725,6 +1725,8 @@ function HomePage({ navigateToPage, darkMode }) {
           if (entry.isIntersecting && !hasAnimated) {
             setHasAnimated(true);
             
+
+        
             const duration = 2000;
             const steps = 60;
             const stepDuration = duration / steps;
@@ -1887,7 +1889,7 @@ function AboutPage({ darkMode }) {
           </div>
         </div>
       </div>
-      
+
       <div className="cv-download-section">
         <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#667eea' }}>Download My CV</h2>
         <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>Get a detailed overview of my experience and skills</p>
