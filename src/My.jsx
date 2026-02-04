@@ -1725,8 +1725,6 @@ function HomePage({ navigateToPage, darkMode }) {
           if (entry.isIntersecting && !hasAnimated) {
             setHasAnimated(true);
 
-
-
         
             const duration = 2000;
             const steps = 60;
@@ -1769,6 +1767,7 @@ function HomePage({ navigateToPage, darkMode }) {
     };
   }, [hasAnimated]);
 
+  
   return (
     <div className="page home-page">
       <div className="hero-section">
