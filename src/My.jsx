@@ -2029,7 +2029,7 @@ function ProjectsPage({ darkMode }) {
       description: 'Full-stack e-commerce solution with payment integration.',
       tech: ['React', 'Node.js', 'MongoDB'],
       image: '🛍️',
-      link: '#'
+      link: '/ecommerce'
     },
     {
       title: 'Social Media Analytics',
