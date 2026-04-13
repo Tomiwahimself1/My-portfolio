@@ -2011,6 +2011,13 @@ function SkillsPage({ darkMode }) {
 function ProjectsPage({ darkMode }) {
   const projects = [
     {
+      title: 'ESL Freedom',
+      description: 'network marketing company',
+      tech: [ 'WordPress', 'MySQL', 'WooCommerce'],
+      image: '🌍',
+      link: 'https://eslfreedom.com/'
+    },
+    {
       title: 'Bright Future Academy',
       description: 'Modern school website showcasing education, facilities, achievements, and student development.',
       tech: ['HTML', 'CSS', 'JavaScript'],
