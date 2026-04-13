@@ -2046,6 +2046,13 @@ function ProjectsPage({ darkMode }) {
       link: '/weather'
     },
     {
+      title: 'Recruitment website',
+      description: 'A job agency website that connects employers and job seekers.',
+      tech: ['CMS', 'Maps', 'Page builder(Elementor)'],
+      image: '🧠',
+      link: 'https://headcount.nl/'
+    },
+    {
       title: 'E-Commerce Platform',
       description: 'Full-stack e-commerce solution with payment integration.',
       tech: ['React', 'Node.js', 'MongoDB'],
