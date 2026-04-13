@@ -2011,6 +2011,20 @@ function SkillsPage({ darkMode }) {
 function ProjectsPage({ darkMode }) {
   const projects = [
     {
+      title: 'Bright Future Academy',
+      description: 'Modern school website showcasing education, facilities, achievements, and student development.',
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      image: '🎓',
+      link: 'https://school-five-navy.vercel.app/'
+    },
+    {
+      title: 'Tims Trendy Fashion Desig',
+      description: 'A clean Fashion Website',
+      tech: [ 'tailwind', 'React'],
+      image: '👗',
+      link: 'http://127.0.0.1:5502/index.html'
+    },
+    {
       title: 'Task Management App',
       description: 'Real-time collaborative task manager with drag-and-drop functionality.',
       tech: ['React', 'Firebase', 'CSS'],
