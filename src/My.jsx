@@ -2106,6 +2106,15 @@ function CertificatesPage({ darkMode }) {
       credentialUrl: 'https://coursera.org/verify/CO61ZPZ7YL00',
       certificateUrl: '/JavaScript.pdf'
     },
+    {
+      title: 'CompTIA Network+ Certification (N10-008)',
+      issuer: 'Packt',
+      date: 'April. 2026.',
+      icon: '📡',
+      credentialUrl: 'https://www.coursera.org/account/accomplishments/specialization/PQAL6NEEJ3RE',
+      certificateUrl: '/CompTIA.pdf'
+    },
+    
      {
       title: 'Business Development, Sales and marketing Professional Diploma',
       issuer: 'Udemy',
