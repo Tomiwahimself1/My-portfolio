@@ -2018,11 +2018,11 @@ function ProjectsPage({ darkMode }) {
       link: 'https://school-five-navy.vercel.app/'
     },
     {
-      title: 'Tims Trendy Fashion Desig',
+      title: 'Tims Trendy Fashion Design',
       description: 'A clean Fashion Website',
       tech: [ 'tailwind', 'React'],
       image: '👗',
-      link: 'tims-trendy.vercel.app'
+      link: 'https://tims-trendy.vercel.app/'
     },
     {
       title: 'Task Management App',
