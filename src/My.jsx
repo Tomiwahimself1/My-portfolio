@@ -2363,7 +2363,7 @@ function ContactPage({ darkMode }) {
           <div className="contact-card animate-in stagger-1">
             <div className="contact-icon">📧</div>
             <h3>Email</h3>
-            <p>adedinsewoadetomiwa7@gmail.com</p>
+            <p>adedinsewoadetomiwa@gmail.com</p>
           </div>
 
           <div className="contact-card animate-in stagger-2">
