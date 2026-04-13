@@ -2107,6 +2107,14 @@ function CertificatesPage({ darkMode }) {
       certificateUrl: '/JavaScript.pdf'
     },
     {
+      title: 'Preparing Data for Analysis with Microsoft Excel',
+      issuer: 'Microsoft',
+      date: 'April. 2026.',
+      icon: '🗂️',
+      credentialUrl: 'https://www.coursera.org/account/accomplishments/records/L5N0MT6NKH0T',
+      certificateUrl: '/Preparing Data for Analysis with Microsoft Excel.pdf'
+    },
+    {
       title: 'CompTIA Network+ Certification (N10-008)',
       issuer: 'Packt',
       date: 'April. 2026.',
@@ -2114,7 +2122,14 @@ function CertificatesPage({ darkMode }) {
       credentialUrl: 'https://www.coursera.org/account/accomplishments/specialization/PQAL6NEEJ3RE',
       certificateUrl: '/CompTIA.pdf'
     },
-    
+    {
+      title: 'Harnessing the Power of Data with Power BI',
+      issuer: 'Microsoft',
+      date: 'April. 2026.',
+      icon: '📊',
+      credentialUrl: 'https://www.coursera.org/account/accomplishments/records/SPVNHK0I6X58',
+      certificateUrl: '/Harnessing the Power of Data with Power BI.pdf'
+    },
      {
       title: 'Business Development, Sales and marketing Professional Diploma',
       issuer: 'Udemy',
