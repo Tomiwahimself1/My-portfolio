@@ -2200,21 +2200,21 @@ function TestimonialsPage({ darkMode }) {
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
+      name: 'Sarah Akinnagbe',
       role: 'CEO, TechStart',
       text: 'Outstanding work! The project was delivered on time and exceeded our expectations.',
       avatar: '👩‍💼',
       rating: 5
     },
     {
-      name: 'Mike Duch',
+      name: 'Adegbule Samson',
       role: 'Product Manager, InnovateCo',
       text: 'Exceptional developer with great communication skills and attention to detail.',
       avatar: '👨‍💼',
       rating: 5
     },
     {
-      name: 'Emily Davis',
+      name: 'Adebunmi Omolade',
       role: 'CTO, WebSolutions',
       text: 'Highly skilled and professional. Would definitely work together again!',
       avatar: '👩‍💻',
