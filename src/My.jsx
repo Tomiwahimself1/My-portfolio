@@ -1868,21 +1868,21 @@ function AboutPage({ darkMode }) {
             <div className="timeline-item">
               <div className="timeline-dot"></div>
               <div className="timeline-content">
-                <h3>Senior Developer</h3>
-                <p>Tech Company | 2022 - Present</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Full Stack Developer</h3>
-                <p>Startup Inc | 2020 - 2022</p>
+                <h3>Senior Software Developer</h3>
+                <p>Self Employed | 2022 - Present</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <h3>Junior Developer</h3>
+                <p>Startup Inc | 2020 - 2022</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
+                <h3>Website Designer</h3>
                 <p>Web Agency | 2018 - 2020</p>
               </div>
             </div>
