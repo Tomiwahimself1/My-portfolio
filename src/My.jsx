@@ -2022,7 +2022,7 @@ function ProjectsPage({ darkMode }) {
       description: 'A clean Fashion Website',
       tech: [ 'tailwind', 'React'],
       image: '👗',
-      link: 'http://127.0.0.1:5502/index.html'
+      link: 'tims-trendy.vercel.app'
     },
     {
       title: 'Task Management App',
