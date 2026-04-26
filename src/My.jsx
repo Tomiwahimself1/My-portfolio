@@ -2463,7 +2463,7 @@ function Footer({ navigateToPage }) {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2025 Tommy Dev. All rights reserved. Made with ❤️</p>
+        <p>© 2025 Tommy Dev. All rights reserved.</p>
       </div>
     </footer>
   );
