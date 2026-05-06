@@ -1893,7 +1893,7 @@ function AboutPage({ darkMode }) {
       <div className="cv-download-section">
         <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#667eea' }}>Download My CV</h2>
         <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>Get a detailed overview of my experience and skills</p>
-        <a href="/CV.pdf" download className="cv-download-btn">
+        <a href="public/CV.pdf" download className="cv-download-btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
