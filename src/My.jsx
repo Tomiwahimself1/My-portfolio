@@ -1701,7 +1701,7 @@ export default function App() {
 
 function HomePage({ navigateToPage, darkMode }) {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Developer', 'Creator', 'Innovator'];
+  const words = ['Developer', 'and UI/UX Designer'];
   const [stats, setStats] = useState([
     { target: 5, current: 0, label: 'Years Experience', suffix: '+' },
     { target: 30, current: 0, label: 'Projects Completed', suffix: '+' },
