@@ -1643,21 +1643,6 @@ export default function App() {
             grid-template-columns: 1fr;
           }
         }
-
-        .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between image and name */
-  cursor: pointer;
-}
-
-.logo-img {
-  width: 35px;          /* Adjust size as needed */
-  height: 35px;         /* Keep width and height equal */
-  border-radius: 50%;   /* This makes it a circle */
-  object-fit: cover;    /* Prevents the image from stretching */
-  border: 2px solid transparent; /* Optional: adds a nice border */
-}
         
         @media (max-width: 600px) {
           .home-stats { 
@@ -1677,7 +1662,7 @@ export default function App() {
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="logo" onClick={() => navigateToPage('home')}>
-            <img src="/Adetomiwa.PNG" />
+            <span className="logo-icon">💻</span>
             <span>Tommy</span>
           </div>
 
