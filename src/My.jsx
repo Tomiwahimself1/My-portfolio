@@ -2268,24 +2268,24 @@ function TestimonialsPage({ darkMode }) {
 
   const testimonials = [
   {
-    name: 'Sarah Akinnagbe',
-    role: 'CEO, TechStart',
+    name: 'Adebayo Mariam',
+    role: 'CEO, Fashion',
     text: 'Outstanding work! The project was delivered on time and exceeded our expectations.',
-    avatar: '/Adetomiwa.PNG',
+    avatar: '/Mariam.JPG',
     rating: 5
   },
   {
-    name: 'Adegbule Samson',
-    role: 'Product Manager, InnovateCo',
+    name: 'Adenika Adedotun',
+    role: 'Product Manager',
     text: 'Exceptional developer with great communication skills and attention to detail.',
-    avatar: '/Adetomiwa.PNG',
+    avatar: '/Adenika.JPG',
     rating: 5
   },
   {
-    name: 'Adebunmi Omolade',
-    role: 'CTO, WebSolutions',
+    name: 'Emmanuel Tolulope',
+    role: 'CTO, Operation and Logistics',
     text: 'Highly skilled and professional. Would definitely work together again!',
-    avatar: '/Adetomiwa.PNG',
+    avatar: '/Emmanuel.PNG',
     rating: 5
   }
 ];
