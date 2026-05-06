@@ -1587,6 +1587,21 @@ export default function App() {
           color: ${darkMode ? '#94a3b8' : '#64748b'};
         }
 
+        .testimonial-avatar img,
+.avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
         @media (max-width: 968px) {
           .nav-links { display: none; }
           .mobile-menu-btn { display: block; }
@@ -1912,15 +1927,15 @@ function SkillsPage({ darkMode }) {
   const skills = [
     { name: 'HTML', level: 98, icon: '🔷', category: 'Frontend' },
     { name: 'CSS/SCSS', level: 88, icon: '🎨', category: 'Frontend' },
-    { name: 'JavaScript', level: 85, icon: '📜', category: 'Frontend' },
+    { name: 'JavaScript', level: 95, icon: '📜', category: 'Frontend' },
     { name: 'React', level: 90, icon: '⚛️', category: 'Frontend' },
     { name: 'TypeScript', level: 82, icon: '📘', category: 'Frontend' },
-    { name: 'WordPress', level: 92, icon: 'Ⓦ', category: 'Frontend' },
-    { name: 'Node.js', level: 75, icon: '🟢', category: 'Backend' },
-    { name: 'Python', level: 80, icon: '🐍', category: 'Backend' },
-    { name: 'Express', level: 77, icon: '🚂', category: 'Backend' },
-    { name: 'MongoDB', level: 78, icon: '🍃', category: 'Database' },
-    { name: 'PostgreSQL', level: 76, icon: '🐘', category: 'Database' }
+    { name: 'WordPress', level: 95, icon: 'Ⓦ', category: 'Frontend' },
+    { name: 'Node.js', level: 95, icon: '🟢', category: 'Backend' },
+    { name: 'Python', level: 90, icon: '🐍', category: 'Backend' },
+    { name: 'Express', level: 97, icon: '🚂', category: 'Backend' },
+    { name: 'MongoDB', level: 98, icon: '🍃', category: 'Database' },
+    { name: 'PostgreSQL', level: 96, icon: '🐘', category: 'Database' }
   ];
 
   const categories = ['Frontend', 'Backend', 'Database'];
@@ -2252,28 +2267,28 @@ function TestimonialsPage({ darkMode }) {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
-    {
-      name: 'Sarah Akinnagbe',
-      role: 'CEO, TechStart',
-      text: 'Outstanding work! The project was delivered on time and exceeded our expectations.',
-      avatar: '👩‍💼',
-      rating: 5
-    },
-    {
-      name: 'Adegbule Samson',
-      role: 'Product Manager, InnovateCo',
-      text: 'Exceptional developer with great communication skills and attention to detail.',
-      avatar: '👨‍💼',
-      rating: 5
-    },
-    {
-      name: 'Adebunmi Omolade',
-      role: 'CTO, WebSolutions',
-      text: 'Highly skilled and professional. Would definitely work together again!',
-      avatar: '👩‍💻',
-      rating: 5
-    }
-  ];
+  {
+    name: 'Sarah Akinnagbe',
+    role: 'CEO, TechStart',
+    text: 'Outstanding work! The project was delivered on time and exceeded our expectations.',
+    avatar: '/Adetomiwa.PNG',
+    rating: 5
+  },
+  {
+    name: 'Adegbule Samson',
+    role: 'Product Manager, InnovateCo',
+    text: 'Exceptional developer with great communication skills and attention to detail.',
+    avatar: '/Adetomiwa.PNG',
+    rating: 5
+  },
+  {
+    name: 'Adebunmi Omolade',
+    role: 'CTO, WebSolutions',
+    text: 'Highly skilled and professional. Would definitely work together again!',
+    avatar: '/Adetomiwa.PNG',
+    rating: 5
+  }
+];
 
   return (
     <div className="page testimonials-page">
@@ -2284,7 +2299,12 @@ function TestimonialsPage({ darkMode }) {
 
       <div className="testimonials-container">
         <div className="testimonial-card">
-          <div className="testimonial-avatar">{testimonials[currentTestimonial].avatar}</div>
+          <div className="testimonial-avatar">
+  <img
+    src={testimonials[currentTestimonial].avatar}
+    alt={testimonials[currentTestimonial].name}
+  />
+</div>
           <div className="rating">
             {Array.from({ length: testimonials[currentTestimonial].rating }).map((_, i) => (
               <span key={i}>⭐</span>
@@ -2310,7 +2330,9 @@ function TestimonialsPage({ darkMode }) {
         {testimonials.map((testimonial, idx) => (
           <div key={idx} className={`testimonial-mini animate-in stagger-${idx + 1}`}>
             <div className="testimonial-mini-header">
-              <span className="avatar">{testimonial.avatar}</span>
+              <span className="avatar">
+  <img src={testimonial.avatar} alt={testimonial.name} />
+</span>
               <div>
                 <h4>{testimonial.name}</h4>
                 <p>{testimonial.role}</p>
