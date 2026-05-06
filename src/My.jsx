@@ -1648,7 +1648,7 @@ export default function App() {
         <div className="nav-container">
           <div className="logo" onClick={() => navigateToPage('home')}>
             <span className="logo-icon">💻</span>
-            <span>Tommy Dev</span>
+            <span>Tommy</span>
           </div>
 
           <ul className="nav-links">
@@ -1701,7 +1701,7 @@ export default function App() {
 
 function HomePage({ navigateToPage, darkMode }) {
   const [currentWord, setCurrentWord] = useState(0);
-  const words = ['Developer', 'Designer', 'Creator', 'Innovator'];
+  const words = ['Developer', 'Creator', 'Innovator'];
   const [stats, setStats] = useState([
     { target: 5, current: 0, label: 'Years Experience', suffix: '+' },
     { target: 30, current: 0, label: 'Projects Completed', suffix: '+' },
@@ -1774,7 +1774,7 @@ function HomePage({ navigateToPage, darkMode }) {
         <div className="hero-content">
           <div className="hero-icon">💻</div>
           <h1 className="hero-title">
-            Hi, I'm <span className="gradient-text">Tommy Dev</span>
+            Hi, I'm <span className="gradient-text">Tommy</span>
           </h1>
           <div className="hero-subtitle">
             <span>Software </span>
@@ -1849,7 +1849,7 @@ function AboutPage({ darkMode }) {
         </div>
 
         <div className="about-text">
-          <h2 className="animate-in stagger-2">Hello! I'm Tommy</h2>
+          <h2 className="animate-in stagger-2">Hello! ADEDINSEWO ADETOMIWA OLUBUNMI</h2>
           <p className="animate-in stagger-3">
             I'm a passionate full-stack developer with over 5 years of experience building modern web applications.
             My journey in tech started with curiosity and has evolved into a career I truly love.
