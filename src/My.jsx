@@ -1849,7 +1849,7 @@ function AboutPage({ darkMode }) {
         </div>
 
         <div className="about-text">
-          <h3 className="animate-in stagger-2">Hello! I'm ADEDINSEWO ADETOMIWA OLUBUNMI</h3>
+          <h2 className="animate-in stagger-2">Hello! I'm ADEDINSEWO ADETOMIWA OLUBUNMI</h2>
           <p className="animate-in stagger-3">
             I'm a passionate Software developer with over 5 years of experience building modern web applications.
             My journey in tech started with curiosity and has evolved into a career I truly love.
