@@ -2477,7 +2477,7 @@ function Footer({ navigateToPage }) {
         <div className="footer-section">
           <h4>Connect</h4>
           <div className="footer-links">
-            <a href="https://github.com/Tomiwahimself1https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/Tomiwahimself1" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://x.com/tomiwahimself" target="_blank" rel="noopener noreferrer">Twitter</a>
             <a href="https://www.linkedin.com/public-profile/settings/?trk=d_flagship3_profile_self_view_public_profile&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BcM1my6vLQqCYAKpI4%2FgxAA%3D%3D" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
