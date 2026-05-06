@@ -1849,9 +1849,9 @@ function AboutPage({ darkMode }) {
         </div>
 
         <div className="about-text">
-          <h2 className="animate-in stagger-2">Hello! ADEDINSEWO ADETOMIWA OLUBUNMI</h2>
+          <h3 className="animate-in stagger-2">Hello! I'm ADEDINSEWO ADETOMIWA OLUBUNMI</h3>
           <p className="animate-in stagger-3">
-            I'm a passionate full-stack developer with over 5 years of experience building modern web applications.
+            I'm a passionate Software developer with over 5 years of experience building modern web applications.
             My journey in tech started with curiosity and has evolved into a career I truly love.
           </p>
           <p className="animate-in stagger-4">
@@ -1876,14 +1876,14 @@ function AboutPage({ darkMode }) {
               <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <h3>Junior Developer</h3>
-                <p>Startup Inc | 2020 - 2022</p>
+                <p> 2020 - 2022</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-dot"></div>
               <div className="timeline-content">
                 <h3>Website Designer</h3>
-                <p>Web Agency | 2018 - 2020</p>
+                <p> 2018 - 2020</p>
               </div>
             </div>
           </div>
