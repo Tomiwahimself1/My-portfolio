@@ -19,12 +19,7 @@ export default function Portfolio() {
   ];
 
   const projects = [
-    {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      link: '#'
-    },
+    
     {
       title: 'Task Management App',
       description: 'Real-time collaborative task manager with drag-and-drop functionality.',
@@ -37,12 +32,6 @@ export default function Portfolio() {
       tech: ['React', 'API Integration', 'Charts'],
       link: '#'
     },
-    {
-      title: 'Social Media Analytics',
-      description: 'Analytics platform for tracking social media metrics and engagement.',
-      tech: ['React', 'D3.js', 'Express'],
-      link: '#'
-    }
   ];
 
   const experiences = [

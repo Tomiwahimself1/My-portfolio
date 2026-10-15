@@ -2,6 +2,7 @@ import React from "react";
 
 export default function App() {
   return (
+    {/*
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-600 to-purple-700 text-white text-center px-4">
       <h1 className="text-5xl md:text-7xl font-bold mb-6">
         🚀 Coming Soon
@@ -22,5 +23,6 @@ export default function App() {
         © {new Date().getFullYear()} ShopHub. All rights reserved.
       </p>
     </div>
+    */}
   );
 }

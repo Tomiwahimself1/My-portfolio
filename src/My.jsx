@@ -2068,34 +2068,6 @@ function ProjectsPage({ darkMode }) {
       image: '🧠',
       link: 'https://headcount.nl/'
     },
-    {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with payment integration.',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      image: '🛍️',
-      link: '/ecommerce'
-    },
-    {
-      title: 'Social Media Analytics',
-      description: 'Analytics platform for tracking social media metrics.',
-      tech: ['React', 'D3.js', 'Express'],
-      image: '📊',
-      link: '#'
-    },
-    {
-      title: 'Portfolio Builder',
-      description: 'Tool for creating beautiful portfolio websites.',
-      tech: ['React', 'CSS', 'Node.js'],
-      image: '🎨',
-      link: '#'
-    },
-    {
-      title: 'Chat Application',
-      description: 'Real-time messaging app with video call features.',
-      tech: ['React', 'Socket.io', 'WebRTC'],
-      image: '💬',
-      link: '#'
-    }
   ];
 
   return (
